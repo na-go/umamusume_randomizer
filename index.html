@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link ref="stylesheet" href="https://unpkg.com/reset-css/reset.css" />-->
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <!-- タイトル -->
+    <div id="wrap">
+        <div id='title'>
+            <h1>ウマ娘Randomizer</h1>
+        </div>
+        <div id='description'>
+            <ul>
+                <li>自分の持ってるウマ娘ランダマイザーだよ。</li>
+                <li>所持ウマ娘をクリックして、下のボタンを押すと抽選されて君の育てるウマ娘が決まるよ。</li>
+                <li>なにかあったらTwitter(@remark_tzi)まで！</li>
+            </ul>
+        </div>
+        <div id='choose-umamusume'>
+            <p>所持ウマ娘を選ぼう！</p>
+            <div id='umamusume-picture'></div>
+        </div>
+        <div id="search-wrap">
+            <div>
+            <button type="button" class="search-button" onclick="search()">★2以下からウマ娘を選ぶ！</button>
+            <button type="button" class="search-button" onclick="searchAll()">全ウマ娘から選ぶ！</button>
+            <button type="button" class="search-button" onclick="searchClear()">クリア</button>
+            </div>
+            <div id="search-result"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

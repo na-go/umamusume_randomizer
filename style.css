@@ -1,0 +1,44 @@
+/* Nannka kake */
+body{
+    margin: 0;
+}
+
+#title{
+    background-color: rgb(185, 223, 255);
+    padding: 1px;
+}
+
+h1{
+    color: #ec6800;
+}
+
+
+.grayscale-layer{
+    width: 70px;
+    height: 70px;
+    filter: grayscale();
+}
+
+.grayscale-layer.erase{
+    filter: none;
+}
+
+.statePicture{
+    width: 70px;
+    height: 70px;
+}
+
+#umamusume-picture{
+    display: flex;
+}
+
+#search-result{
+    height: 40vh;
+    width: 30vw;
+    overflow-y: scroll;
+    border-width: thick;
+    border-style: solid;
+    border-color: #ec6800;
+    margin: 10px;
+    border-radius: 1%;
+}
