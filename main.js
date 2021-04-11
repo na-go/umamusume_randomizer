@@ -1,11 +1,16 @@
+
+let inputList = []
+
 const initDraw=() =>{
     // 出力するウマ娘のリスト
-    let umaList = ['toukaiteio', 'specialweek']
-    // grayscaleのウマ娘を並べる
-    umaList.forEach((umaName) => {
+    let umaListStar3 = {
+        'toukaiteio':'トウカイテイオー',
+        'specialweek': 'スペシャルウィーク'
+    }    // grayscaleのウマ娘を並べる
+    Object.keys(umaListStar3).forEach((umaName) => {
         $("#umamusume-picture").append(
-            `<div class="grayscale-layer" onclick="picToggle(this, '${umaName}')">
-            <img src="./picture/${umaName}.png" class="statePicture">
+            `<div class="grayscale-layer" onclick="picToggle(this, '${umaListStar3[umaName]}')">
+            <img src="../../picture/${umaName}.png" class="statePicture">
             </div>`
         )
     })
@@ -38,22 +43,60 @@ const searchAll=() => {
 
 //検索結果を消す関数
 const searchClear=() => {
-    $('#search-result').text("ぽれのウマ娘は・・・？");
+    $('#search-result').text("");
+    inputList = [];
+    allGray();
 }
 
 //選んだウマ娘を灰色にしたりする関数
 const picToggle = (self, umaName) =>{
-    console.log(self)
-    console.log(self)
     $(self).toggleClass('erase');
-    if(self == 'grayscale-layer'){
-        console.log('hi')
-        $("#search-result").append(`<div class='umamusume'>${umaName}</div>`)
-    }
+    changeNameList(umaName);
 }
 
-const addName2List = () =>{
+//すべてのウマ娘を灰色にしたりする関数
+const allGray = () => {
+    element = document.querySelectorAll('.grayscale-layer.erase')
+    console.log(element)
+    console.log(element.classList)
+    element.classList.replace('grayscale-layer.erase','grayscale-layer')
+}
 
+// inputListに対する処理
+const changeNameList = (umaName) =>{
+    let inFlag = 1
+    if(inputList.length != 0){
+        inputList.forEach((alreadyName) => {
+            if(umaName == alreadyName){
+                inFlag = 0
+            }
+    })       
+    }
+    if(inFlag){
+        //$("#search-result").append(`<div class='umamusume'>${umaName}</div>`)
+        inputList.push(umaName)
+    }
+    else{
+        inputList = inputList.filter((alreadyName) =>{
+            return alreadyName !== umaName
+        })
+    }
+    console.log(inputList)
+}
+
+// リストから抽選
+const lotteryUmamusume=() => {
+    listLength = inputList.length;
+    console.log(listLength)
+    umaId = getRandomListInt(listLength);
+    $('#search-result').text("");
+    if(listLength>0){
+        $("#search-result").append(`君のウマ娘は～～～！<strong>${inputList[umaId]}</strong>！！`);
+    }
+    else{
+        $('#search-result').append('ウマ娘を選んでね')
+    }
+    console.log(inputList[umaId]);
 }
 
 // リストの長さ分の乱数を出力する関数
