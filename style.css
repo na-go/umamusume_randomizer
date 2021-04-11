@@ -33,9 +33,9 @@ h1{
 }
 
 #search-result{
-    height: 60px;
-    width: 400px;
-    /*overflow-y: scroll;*/
+    height: 40vh;
+    width: 30vw;
+    overflow-y: scroll;
     border-width: thick;
     border-style: solid;
     border-color: #ec6800;
